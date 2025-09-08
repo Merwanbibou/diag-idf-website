@@ -256,30 +256,8 @@ window.addEventListener('error', (e) => {
     console.warn('Resource failed to load:', e.target);
 }, true);
 
-// Contact Form Handling
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        // Validation uniquement - laisse Netlify gérer la soumission
-        if (!validateForm()) {
-            e.preventDefault();
-            showFormStatus('error', 'Veuillez corriger les erreurs dans le formulaire.');
-            return;
-        }
-        
-        // Show loading state mais ne pas empêcher la soumission
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        submitBtn.classList.add('loading');
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="btn-icon">⏳</span>Envoi en cours...';
-        
-        showFormStatus('loading', 'Envoi en cours...');
-        
-        // NE PAS faire e.preventDefault() - laisse le formulaire se soumettre normalement à Netlify
-    });
-}
+// Contact Form - Géré entièrement par Netlify
+// Plus de JavaScript nécessaire pour le formulaire
 
 function createEmailBody(data) {
     let body = `Bonjour,\n\n`;
