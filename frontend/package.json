@@ -1,0 +1,28 @@
+{
+  "name": "diag-idf-website",
+  "version": "1.0.0",
+  "description": "Site web pour DIAG IDF - Diagnostic automobile 24h/24 7j/7",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "diagnostic",
+    "automobile",
+    "reprogrammation",
+    "ethanol",
+    "stage1",
+    "adblue",
+    "fap",
+    "egr"
+  ],
+  "author": "DIAG IDF",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
