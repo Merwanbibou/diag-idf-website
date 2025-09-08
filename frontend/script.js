@@ -262,49 +262,26 @@ const formStatus = document.getElementById('formStatus');
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        // Pour Netlify Forms, on laisse le formulaire se soumettre naturellement
+        // mais on ajoute une validation et un feedback visuel
         
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Add urgency status
-        data.urgency = document.getElementById('urgency').checked;
+        if (!validateForm()) {
+            e.preventDefault();
+            showFormStatus('error', 'Veuillez corriger les erreurs dans le formulaire.');
+            return;
+        }
         
         // Show loading state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="btn-icon">⏳</span>Envoi en cours...';
         
         showFormStatus('loading', 'Envoi en cours...');
         
-        try {
-            // Create mailto link with form data
-            const emailBody = createEmailBody(data);
-            const mailtoLink = `mailto:Diagotoidf@outlook.com?subject=Demande de service - ${data.service || 'Contact'}&body=${encodeURIComponent(emailBody)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            showFormStatus('success', 'Votre client email va s\'ouvrir. Si cela ne fonctionne pas automatiquement, copiez les informations et envoyez un email à Diagotoidf@outlook.com');
-            
-            // Reset form after a delay
-            setTimeout(() => {
-                contactForm.reset();
-                hideFormStatus();
-            }, 5000);
-            
-        } catch (error) {
-            console.error('Error:', error);
-            showFormStatus('error', 'Une erreur s\'est produite. Veuillez réessayer ou nous appeler directement au +33 7 59 09 45 76');
-        } finally {
-            // Reset button state
-            submitBtn.classList.remove('loading');
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-        }
+        // Le formulaire se soumet automatiquement à Netlify
+        // Netlify redirigera vers une page de confirmation ou affichera un message
     });
 }
 

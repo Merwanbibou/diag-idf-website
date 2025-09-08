@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci - DIAG IDF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .thank-you-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 2rem;
+        }
+        
+        .thank-you-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .thank-you-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .thank-you-title {
+            color: #1a1a1a;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you-message {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .contact-info h3 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-details {
+            display: grid;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #dc2626;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .back-button:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .thank-you-card {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .thank-you-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="thank-you-card">
+            <div class="thank-you-icon">✅</div>
+            <h1 class="thank-you-title">Message envoyé !</h1>
+            <p class="thank-you-message">
+                Merci pour votre demande. Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.
+            </p>
+            
+            <div class="contact-info">
+                <h3>🚨 Besoin urgent ? Appelez-nous maintenant !</h3>
+                <div class="contact-details">
+                    <div>📱 <strong>+33 7 59 09 45 76</strong></div>
+                    <div>✉️ Diagotoidf@outlook.com</div>
+                    <div>🕐 <strong>Service 24h/24 7j/7</strong></div>
+                    <div>📍 Déplacement en Île-de-France</div>
+                </div>
+            </div>
+            
+            <p style="color: #666; margin: 1.5rem 0;">
+                <strong>Temps de réponse habituel :</strong> 2-4 heures en journée
+            </p>
+            
+            <a href="/" class="back-button">
+                ← Retour à l'accueil
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Redirection automatique après 10 secondes
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 10000);
+        
+        // Afficher un compte à rebours
+        let countdown = 10;
+        const countdownElement = document.createElement('p');
+        countdownElement.style.color = '#999';
+        countdownElement.style.fontSize = '0.9rem';
+        countdownElement.style.marginTop = '1rem';
+        document.querySelector('.thank-you-card').appendChild(countdownElement);
+        
+        const updateCountdown = () => {
+            countdownElement.textContent = `Redirection automatique dans ${countdown} secondes...`;
+            countdown--;
+            if (countdown < 0) {
+                clearInterval(countdownTimer);
+            }
+        };
+        
+        updateCountdown();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

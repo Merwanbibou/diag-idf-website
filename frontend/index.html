@@ -214,7 +214,12 @@
                 <h3 class="form-title">Envoyez-nous un message</h3>
                 <p class="form-subtitle">Décrivez votre problème ou demandez un devis personnalisé</p>
                 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/merci.html">
+                    <!-- Champ anti-spam invisible -->
+                    <div style="display: none;">
+                        <label>Ne pas remplir ce champ : <input name="bot-field" /></label>
+                    </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">Prénom *</label>
