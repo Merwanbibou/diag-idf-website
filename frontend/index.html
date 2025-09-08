@@ -214,53 +214,60 @@
                 <h3 class="form-title">Envoyez-nous un message</h3>
                 <p class="form-subtitle">Décrivez votre problème ou demandez un devis personnalisé</p>
                 
-                <form name="contact" netlify>
+                <form name="contact" netlify class="contact-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Prénom *<input type="text" name="firstName" required></label>
+                            <label for="firstName">Prénom *</label>
+                            <input type="text" id="firstName" name="firstName" required>
                         </div>
                         <div class="form-group">
-                            <label>Nom *<input type="text" name="lastName" required></label>
+                            <label for="lastName">Nom *</label>
+                            <input type="text" id="lastName" name="lastName" required>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Email *<input type="email" name="email" required></label>
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label>Téléphone <input type="tel" name="phone" placeholder="+33 X XX XX XX XX"></label>
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+33 X XX XX XX XX">
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label>Véhicule (Marque, Modèle, Année) <input type="text" name="vehicle" placeholder="ex: Peugeot 308 2018"></label>
+                        <label for="vehicle">Véhicule (Marque, Modèle, Année)</label>
+                        <input type="text" id="vehicle" name="vehicle" placeholder="ex: Peugeot 308 2018">
                     </div>
                     
                     <div class="form-group">
-                        <label>Service souhaité
-                            <select name="service">
-                                <option value="">Sélectionnez un service</option>
-                                <option value="diagnostic">Diagnostic complet</option>
-                                <option value="fap-egr">Solution FAP/EGR</option>
-                                <option value="adblue">Ad Blue</option>
-                                <option value="stage1">Stage 1</option>
-                                <option value="ethanol">Reprogrammation Ethanol</option>
-                                <option value="effacement">Effacement voyant</option>
-                                <option value="boite-auto">Programmation boîte auto</option>
-                                <option value="popbang">Pop bang</option>
-                                <option value="autre">Autre</option>
-                            </select>
-                        </label>
+                        <label for="service">Service souhaité</label>
+                        <select id="service" name="service">
+                            <option value="">Sélectionnez un service</option>
+                            <option value="diagnostic">Diagnostic complet</option>
+                            <option value="fap-egr">Solution FAP/EGR</option>
+                            <option value="adblue">Ad Blue</option>
+                            <option value="stage1">Stage 1</option>
+                            <option value="ethanol">Reprogrammation Ethanol</option>
+                            <option value="effacement">Effacement voyant</option>
+                            <option value="boite-auto">Programmation boîte auto</option>
+                            <option value="popbang">Pop bang</option>
+                            <option value="autre">Autre</option>
+                        </select>
                     </div>
                     
                     <div class="form-group">
-                        <label>Message *<textarea name="message" rows="5" placeholder="Décrivez votre problème ou votre demande..." required></textarea></label>
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Décrivez votre problème ou votre demande..." required></textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="urgency"> Intervention urgente (24h/24)
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="urgency">
+                            <span class="checkmark"></span>
+                            Intervention urgente (24h/24)
                         </label>
                     </div>
                     
