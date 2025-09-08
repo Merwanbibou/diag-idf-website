@@ -262,26 +262,22 @@ const formStatus = document.getElementById('formStatus');
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
-        // Pour Netlify Forms, on laisse le formulaire se soumettre naturellement
-        // mais on ajoute une validation et un feedback visuel
-        
+        // Validation uniquement - laisse Netlify gérer la soumission
         if (!validateForm()) {
             e.preventDefault();
             showFormStatus('error', 'Veuillez corriger les erreurs dans le formulaire.');
             return;
         }
         
-        // Show loading state
+        // Show loading state mais ne pas empêcher la soumission
         const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="btn-icon">⏳</span>Envoi en cours...';
         
         showFormStatus('loading', 'Envoi en cours...');
         
-        // Le formulaire se soumet automatiquement à Netlify
-        // Netlify redirigera vers une page de confirmation ou affichera un message
+        // NE PAS faire e.preventDefault() - laisse le formulaire se soumettre normalement à Netlify
     });
 }
 
