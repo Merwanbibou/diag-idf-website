@@ -2,10 +2,6 @@
   publish = "frontend"
   command = "echo 'No build step required for static site'"
 
-# Image optimization settings
-[[plugins]]
-  package = "@netlify/plugin-image-optim"
-
 # Headers for better performance
 [[headers]]
   for = "/*.js"
@@ -27,7 +23,7 @@
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
-# Image transformation settings
+# Enable Netlify Image CDN (automatic with /.netlify/images API)
 [build.environment]
   NETLIFY_IMAGE_CDN = "true"
 
