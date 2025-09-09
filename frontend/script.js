@@ -233,21 +233,50 @@ whatsappLinks.forEach(link => {
     });
 });
 
-// Performance optimization: Lazy load images if any are added
+// Enhanced Lazy Loading with WebP support and responsive images
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.src = img.dataset.src;
+                
+                // Load the image
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+                
+                // Load responsive images if available
+                if (img.dataset.srcset) {
+                    img.srcset = img.dataset.srcset;
+                }
+                
+                // Add loaded class for smooth transition
+                img.classList.add('loaded');
                 img.classList.remove('lazy');
+                
+                // Stop observing this image
                 imageObserver.unobserve(img);
             }
         });
+    }, {
+        // Start loading images 100px before they enter viewport
+        rootMargin: '100px 0px',
+        threshold: 0.01
     });
 
+    // Observe all lazy images
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
+    });
+} else {
+    // Fallback for browsers without IntersectionObserver
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        img.src = img.dataset.src;
+        if (img.dataset.srcset) {
+            img.srcset = img.dataset.srcset;
+        }
+        img.classList.add('loaded');
+        img.classList.remove('lazy');
     });
 }
 

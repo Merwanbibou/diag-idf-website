@@ -1,37 +1,47 @@
 [build]
-  # Dossier à publier
   publish = "frontend"
-  
-  # Commande de build (pas nécessaire pour un site statique)
-  command = "echo 'Site statique - pas de build nécessaire'"
+  command = "echo 'No build step required for static site'"
 
-[build.environment]
-  # Variables d'environnement si nécessaire
-  NODE_VERSION = "18"
+# Image optimization settings
+[[plugins]]
+  package = "@netlify/plugin-image-optim"
 
-# Configuration des redirections et headers
+# Headers for better performance
 [[headers]]
-  # Headers pour tous les fichiers
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Image transformation settings
+[build.environment]
+  NETLIFY_IMAGE_CDN = "true"
+
+# Redirects for better SEO
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+# Security headers
+[[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Headers spécifiques pour les assets statiques
-[[headers]]
-  for = "/style.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/script.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-# Redirections si nécessaire (exemple)
-# [[redirects]]
-#   from = "/old-page"
-#   to = "/new-page"
-#   status = 301

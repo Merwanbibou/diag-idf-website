@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="/.netlify/images?url=/images/AdobeStock_1218537079.jpeg&w=800&fm=webp">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -52,7 +56,15 @@
             </div>
             <div class="hero-image">
                 <div class="hero-visual">
-                    <img src="images/AdobeStock_1218537079.jpeg" alt="Diagnostic automobile professionnel" class="hero-main-image">
+                    <img 
+                        src="/.netlify/images?url=/images/AdobeStock_1218537079.jpeg&w=800&fm=webp" 
+                        srcset="/.netlify/images?url=/images/AdobeStock_1218537079.jpeg&w=400&fm=webp 400w,
+                                /.netlify/images?url=/images/AdobeStock_1218537079.jpeg&w=800&fm=webp 800w,
+                                /.netlify/images?url=/images/AdobeStock_1218537079.jpeg&w=1200&fm=webp 1200w"
+                        sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                        alt="Diagnostic automobile professionnel" 
+                        class="hero-main-image"
+                        loading="eager">
                     <div class="diagnostic-device">
                         <div class="device-screen">
                             <div class="screen-icons">
@@ -79,7 +91,10 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="services-background">
-            <img data-src="images/AdobeStock_981235600.jpeg" alt="Atelier automobile" class="services-bg-image lazy">
+            <img 
+                data-src="/.netlify/images?url=/images/AdobeStock_981235600.jpeg&w=1920&fm=webp&q=70" 
+                alt="Atelier automobile" 
+                class="services-bg-image lazy">
         </div>
         <div class="container">
             <div class="section-header">
@@ -163,9 +178,27 @@
                 </div>
                 <div class="why-image">
                     <div class="image-gallery">
-                        <img data-src="images/AdobeStock_238262443.jpeg" alt="Reprogrammation automobile" class="gallery-image main-image lazy">
-                        <img data-src="images/AdobeStock_302319358.jpeg" alt="Diagnostic électronique" class="gallery-image secondary-image lazy">
-                        <img data-src="images/AdobeStock_455022348.jpeg" alt="Outils de diagnostic" class="gallery-image accent-image lazy">
+                        <img 
+                            data-src="/.netlify/images?url=/images/AdobeStock_238262443.jpeg&w=600&fm=webp&q=80"
+                            data-srcset="/.netlify/images?url=/images/AdobeStock_238262443.jpeg&w=300&fm=webp&q=80 300w,
+                                        /.netlify/images?url=/images/AdobeStock_238262443.jpeg&w=600&fm=webp&q=80 600w"
+                            sizes="(max-width: 768px) 300px, 600px"
+                            alt="Reprogrammation automobile" 
+                            class="gallery-image main-image lazy">
+                        <img 
+                            data-src="/.netlify/images?url=/images/AdobeStock_302319358.jpeg&w=400&fm=webp&q=80"
+                            data-srcset="/.netlify/images?url=/images/AdobeStock_302319358.jpeg&w=200&fm=webp&q=80 200w,
+                                        /.netlify/images?url=/images/AdobeStock_302319358.jpeg&w=400&fm=webp&q=80 400w"
+                            sizes="(max-width: 768px) 200px, 400px"
+                            alt="Diagnostic électronique" 
+                            class="gallery-image secondary-image lazy">
+                        <img 
+                            data-src="/.netlify/images?url=/images/AdobeStock_455022348.jpeg&w=400&fm=webp&q=80"
+                            data-srcset="/.netlify/images?url=/images/AdobeStock_455022348.jpeg&w=200&fm=webp&q=80 200w,
+                                        /.netlify/images?url=/images/AdobeStock_455022348.jpeg&w=400&fm=webp&q=80 400w"
+                            sizes="(max-width: 768px) 200px, 400px"
+                            alt="Outils de diagnostic" 
+                            class="gallery-image accent-image lazy">
                     </div>
                 </div>
             </div>
