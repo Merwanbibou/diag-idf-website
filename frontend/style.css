@@ -126,6 +126,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-top: 80px; /* Espace pour le header fixe */
 }
 
 .hero::before {
@@ -1031,14 +1032,26 @@ body {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 
+    .hero {
+        padding-top: 100px; /* Plus d'espace sur mobile pour le header */
+        padding-bottom: 40px;
+    }
+
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 2rem;
+        padding: 0 1rem; /* Padding horizontal pour éviter que le texte touche les bords */
     }
 
     .hero-title {
         font-size: 2.5rem;
+        line-height: 1.2; /* Améliorer l'espacement des lignes */
+        margin-bottom: 2rem; /* Plus d'espace sous le titre */
+    }
+
+    .hero-brand {
+        margin-bottom: 1rem; /* Plus d'espace sous "DIAG IDF" */
     }
 
     .hero-tagline {
@@ -1107,8 +1120,29 @@ body {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding-top: 120px; /* Encore plus d'espace sur très petits écrans */
+        padding-bottom: 60px;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+    }
+
     .hero-title {
         font-size: 2rem;
+        line-height: 1.3;
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-brand {
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+
+    .hero-tagline {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
     }
 
     .section-title {
